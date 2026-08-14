@@ -8,7 +8,7 @@ public class VideosApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VideosApplication.class, args);
-		System.out.println("hello world");
+		System.out.println();
 	}
 
 }
