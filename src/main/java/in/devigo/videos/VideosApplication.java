@@ -8,6 +8,7 @@ public class VideosApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VideosApplication.class, args);
+		System.out.println("pawan kumar is a good boy");
 		System.out.println("suraj kumar");
 	}
 
