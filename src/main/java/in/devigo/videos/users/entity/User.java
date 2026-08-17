@@ -1,5 +1,6 @@
 package in.devigo.videos.users.entity;
 
+import in.devigo.videos.auth.entity.Auth;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,6 +11,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auth_id")
+    private Auth auth;
 
     @Column(name = "first_name")
     private String firstName;
