@@ -1,5 +1,6 @@
 package in.devigo.videos.users.entity;
 
+import in.devigo.videos.auth.entity.Auth;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,6 +17,10 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auth_id")
+    private Auth auth;
+
     @NotNull
     @Column(name = "user_name", unique = true)
     private String userName;
@@ -28,8 +33,10 @@ public class User {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     @Column(name = "update_at")
     private LocalDateTime updatedAt;
+
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
