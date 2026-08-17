@@ -1,8 +1,19 @@
 package in.devigo.videos.auth.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+
 public class AdminSignup {
+    @NotNull(message = "email cannot be null")
+    @Email
     private String email;
+
+    @NotNull(message = "password cannot be null")
+    @Length(min = 6)
     private  String password;
+
+    @NotNull(message = "confirm Password required")
     private String confirmPassword;
 
     public AdminSignup(String email, String password , String confirmPassword) {
