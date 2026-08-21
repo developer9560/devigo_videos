@@ -33,8 +33,10 @@ public class User {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     @Column(name = "update_at")
     private LocalDateTime updatedAt;
+
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
@@ -45,8 +47,24 @@ public class User {
     }
 
     @PreUpdate
-    public void onUpdate(){
+    public void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Auth getAuth() {
+        return auth;
+    }
+
+    public void setAuth(Auth auth) {
+        this.auth = auth;
     }
 
     public String getFirstName() {

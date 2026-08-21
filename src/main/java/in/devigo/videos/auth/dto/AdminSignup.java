@@ -2,20 +2,18 @@ package in.devigo.videos.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import org.aspectj.bridge.Message;
+import org.hibernate.validator.constraints.Length;
 
 public class AdminSignup {
-    @NotNull(message = "Email cannot be null")
+    @NotNull(message = "email cannot be null")
     @Email
     private String email;
 
-    @NotNull(message =  "Password cannot be null")
-    @Size(min = 6 ,max = 250 , message = "password size must be grater than 6 character")
+    @NotNull(message = "password cannot be null")
+    @Length(min = 6)
     private  String password;
 
-    @NotNull(message = "confirm Password cannot be null")
-    @Size(min=6 , message = "password size must be greater than 6 character ")
+    @NotNull(message = "confirm Password required")
     private String confirmPassword;
 
     public AdminSignup(String email, String password , String confirmPassword) {

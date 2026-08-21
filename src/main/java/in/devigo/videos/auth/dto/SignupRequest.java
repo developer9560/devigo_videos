@@ -2,21 +2,19 @@ package in.devigo.videos.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 
 public class SignupRequest {
-    @NotNull(message =  "Email cannot be null")
     @Email
+    @NotNull(message = "email cannot be null")
     private String email;
 
-    @NotNull(message = "Password is required")
-    @Size(min = 6, max = 250, message = "Password must be greater than 6 character")
+    @NotNull(message = "password is required")
+    @Length(min =6, max  =250)
     private String password;
-
-    @NotNull(message = " IsUser is required as true of false")
+    @NotNull(message = "only cantains TRUE , False")
     private boolean isUser;
 
     public SignupRequest(String email, String password, boolean isUser) {
