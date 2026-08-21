@@ -22,7 +22,7 @@ public class UserService {
     }
 
      public String createUser(UsersProfileAdd profile, Long authId){
-        if(repository.existsByUsername(profile.getUsername())){
+        if(repository.existsByUserName(profile.getUsername())){
             throw new BadRequestException("Username is already in use");
         }
         User user = new User();
@@ -32,5 +32,6 @@ public class UserService {
         user.setGender(profile.getGender());
         repository.save(user);
         return "User is created successfully";
+
     }
 }

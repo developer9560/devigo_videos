@@ -14,9 +14,8 @@ public class Video {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "creator_id",
-    nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "creator_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -24,7 +23,7 @@ public class Video {
     private Category category;
 
     @Column(name = "video_link",
-    nullable = false)
+            nullable = false)
     private String videoLink;
 
     @Column(name = "thumbnail_link",
@@ -58,6 +57,14 @@ public class Video {
     @PreUpdate
     public void onUpdate(){
         updatedAt = LocalDateTime.now();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -163,6 +170,4 @@ public class Video {
     public void setDeletedAt(LocalDateTime deletedAt) {
         this.deletedAt = deletedAt;
     }
-
-
 }

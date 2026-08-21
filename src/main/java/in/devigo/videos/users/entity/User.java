@@ -12,14 +12,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auth_id")
+    private Auth auth;
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "auth_id")
-    private Auth auth;
 
     @NotNull
     @Column(name = "user_name", unique = true)
@@ -47,8 +47,24 @@ public class User {
     }
 
     @PreUpdate
-    public void onUpdate(){
+    public void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Auth getAuth() {
+        return auth;
+    }
+
+    public void setAuth(Auth auth) {
+        this.auth = auth;
     }
 
     public String getFirstName() {
